@@ -9,12 +9,15 @@ import SwiftUI
 
 @main
 struct swiftUIMemoApp: App {
-    let persistenceController = PersistenceController.shared
-
-    var body: some Scene {
-        WindowGroup {
-          MemoListScene()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-        }
+  let persistenceController = PersistenceController.shared
+  let store = MemoStore()
+  
+  var body: some Scene {
+    WindowGroup {
+      MemoListScene()
+        .environment(\.managedObjectContext, persistenceController.container.viewContext)
+        .environmentObject(store)
+      
     }
+  }
 }
