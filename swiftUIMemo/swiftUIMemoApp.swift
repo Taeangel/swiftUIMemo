@@ -17,6 +17,7 @@ struct swiftUIMemoApp: App {
       MemoListScene()
         .environment(\.managedObjectContext, persistenceController.container.viewContext)
         .environmentObject(store)
+        .environmentObject(DateFormatter.memoDateFormatter)
       
     }
   }

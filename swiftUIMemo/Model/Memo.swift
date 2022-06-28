@@ -13,9 +13,9 @@ class Memo: Identifiable, ObservableObject {
   
   let id: UUID
   @Published var content: String //Published를 선언하면 새로운 값이 저장될때마다 바인딩되어있는 UI가 자동으로 업데이트 됩니다.
-  let insertData: Data //메모생성날짜 저장
+  let insertData: Date //메모생성날짜 저장
   
-  init(id: UUID = UUID() ,content: String, insertData: Data = Data()) {
+  init(id: UUID = UUID() ,content: String, insertData: Date = Date()) {
     self.id = id
     self.content = content
     self.insertData = insertData
