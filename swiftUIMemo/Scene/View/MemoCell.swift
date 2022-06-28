@@ -23,6 +23,7 @@ struct MemoCell: View {
     }
   }
 }
+ 
 struct MemoCell_Previews: PreviewProvider {
     static var previews: some View {
       MemoCell(memo: Memo(content: "Test"))
