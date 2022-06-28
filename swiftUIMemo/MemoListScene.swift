@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MemoListScene: View {
     var body: some View {
-      Text("핼로월드")
+      Text("핼로월드!!")
     }
 }
    
