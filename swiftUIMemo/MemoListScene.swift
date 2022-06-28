@@ -14,15 +14,7 @@ struct MemoListScene: View {
   var body: some View {
     NavigationView {
       List(store.list) { memo in
-        VStack(alignment: .leading) {
-          Text(memo.content)
-            .font(.body)
-            .lineLimit(1)
-          
-          Text("\(memo.insertData, formatter: self.formatter)")
-            .font(.caption)
-            .foregroundColor(Color(UIColor.secondaryLabel))
-        }
+        MemoCell(memo: memo)
       }
       .navigationTitle("내 메모")
     }
