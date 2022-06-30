@@ -20,8 +20,9 @@ struct MemoListScene: View {
       }
       .navigationTitle("내 메모")
       .navigationBarItems(trailing: ModalButton(show: $showComposer)) //값이 전달되는것이 아니라 바인딩을 전달
-      .sheet(isPresented: $showComposer, content: { 
+      .sheet(isPresented: $showComposer, content: {
         ComposeScene(showComposer: self.$showComposer)
+//          .environmentObject(store)//????? 안해줘도 되는데??
       })
     }
   }

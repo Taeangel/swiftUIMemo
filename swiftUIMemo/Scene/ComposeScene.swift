@@ -17,13 +17,14 @@ struct ComposeScene: View {
     NavigationView {
       VStack {
         TextField("", text: $content)
+          .background(Color.yellow)
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity)
       .navigationTitle("새 메모")
       .navigationBarTitleDisplayMode(.inline)
       .navigationBarItems(
         leading: DismissButton(show: $showComposer),
-        trailing: SaveButton(show: $showComposer))
+        trailing: SaveButton(show: $showComposer, content: $content))
     }
   }
 }
@@ -43,8 +44,12 @@ fileprivate struct DismissButton: View {
 fileprivate struct SaveButton: View {
   @Binding var show: Bool
 
+  @EnvironmentObject var store: MemoStore
+  @Binding var content: String
+  
   var body: some View {
     Button(action: {
+      store.insert(memo: content)
       show = false
     }, label: {
       Text("저장")
