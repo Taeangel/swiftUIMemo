@@ -14,7 +14,9 @@ struct ComposeScene: View {
   
   @Binding var showComposer: Bool
   
-  var body: some View {
+  var memo: Memo? = nil // 메모가 전달되면 편집모드 전달되지 않으면 쓰기모드
+  
+  var body: some View  {
     NavigationView {
       VStack {
         TextView(text: $content)
@@ -24,11 +26,15 @@ struct ComposeScene: View {
 //          .background(Color.yellow)
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity)
-      .navigationTitle("새 메모")
+      .navigationTitle(memo != nil ? "메모 편집" : "새 메모")
       .navigationBarTitleDisplayMode(.inline)
       .navigationBarItems(
         leading: DismissButton(show: $showComposer),
-        trailing: SaveButton(show: $showComposer, content: $content))
+        trailing: SaveButton(show: $showComposer, content: $content, memo: memo))
+    }
+    .onAppear {
+     //화면이 표시되는 시점에 초기화를 구현하고 싶으면 여기서 구현
+      self.content = self.memo?.content ?? ""
     }
   }
 }
@@ -51,9 +57,17 @@ fileprivate struct SaveButton: View {
   @EnvironmentObject var store: MemoStore
   @Binding var content: String
   
+  var memo: Memo? = nil
+  
   var body: some View {
     Button(action: {
-      store.insert(memo: content)
+      
+      if let memo = self.memo {
+        store.updata(memo: memo, content: content)
+      } else {
+        store.insert(memo: content)
+      }
+      
       show = false
     }, label: {
       Text("저장")
