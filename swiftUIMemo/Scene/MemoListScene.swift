@@ -23,6 +23,7 @@ struct MemoListScene: View {
       .sheet(isPresented: $showComposer, content: {
         ComposeScene(showComposer: self.$showComposer)
 //          .environmentObject(store)//????? 안해줘도 되는데??
+          .environmentObject(KeyboardObserver())
       })
     }
   }

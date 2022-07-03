@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ComposeScene: View {
+  @EnvironmentObject var keyboard: KeyboardObserver
   @EnvironmentObject var store: MemoStore
   @State private var content: String = ""
   
@@ -18,7 +19,9 @@ struct ComposeScene: View {
       VStack {
         TextView(text: $content)
           .frame(maxWidth: .infinity, maxHeight: .infinity)
-          .background(Color.yellow)
+      //    .padding(.bottom, keyboard.context.height) //왜 이렇까 ㅠ
+          .animation(.easeInOut(duration: keyboard.context.animationDuration))
+//          .background(Color.yellow)
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity)
       .navigationTitle("새 메모")
@@ -62,5 +65,6 @@ struct ComposeScene_Previews: PreviewProvider {
   static var previews: some View {
     ComposeScene(showComposer: .constant(false)) 
       .environmentObject(MemoStore())
+      .environmentObject(KeyboardObserver())
   }
 }
