@@ -14,6 +14,9 @@ struct DetailScene: View {
   @EnvironmentObject var formatter: DateFormatter
   
   @State private var showEditSheet = false
+  @State private var showDeleteAlert = false
+  
+  @Environment(\.presentationMode) var presentationMode // presentationMode에 화면전환을 관리하는 객체가 저장됨
   
   var body: some View {
     VStack {
@@ -33,9 +36,27 @@ struct DetailScene: View {
       }
       HStack {
         Button(action: {
+          showDeleteAlert.toggle()
+        }, label: {
+          Image(systemName: "trash")
+            .foregroundColor(Color(UIColor.systemRed))
+        })
+        .padding()
+        .alert(isPresented: $showDeleteAlert, content: {
+          Alert(title: Text("삭제확인"), message: Text("메모리삭제?"),
+                primaryButton: .destructive(Text("삭제"),
+                  action: {
+            store.delete(memo: memo)
+            self.presentationMode.wrappedValue.dismiss() // 이전화면 이동
+          }), secondaryButton: .cancel() )
+        })
+        
+        Spacer() // 양쪽끝으로
+        
+        Button(action: {
           showEditSheet.toggle()
         }, label: {
-           Image(systemName: "square.and.pencil")
+          Image(systemName: "square.and.pencil")
         })
         .padding()
         .sheet(isPresented: $showEditSheet, content: {
@@ -44,6 +65,8 @@ struct DetailScene: View {
             .environmentObject(KeyboardObserver())
         })
       }
+      .padding(.leading)
+      .padding(.trailing)
     }
     .navigationTitle("메모보기")
   }

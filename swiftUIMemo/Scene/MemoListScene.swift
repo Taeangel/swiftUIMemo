@@ -15,19 +15,23 @@ struct MemoListScene: View {
   
   var body: some View {
     NavigationView {
-      List(store.list) { memo in
-        NavigationLink(destination: DetailScene(memo: memo), label: {
-          MemoCell(memo: memo)
-        })
-        
+      List {
+        ForEach(store.list) { memo in
+          NavigationLink(destination: DetailScene(memo: memo), label: {
+            MemoCell(memo: memo)
+          })
+          
+        }//onDelete 위치가 중요함
+        .onDelete(perform: store.delete)
       }
       .navigationTitle("내 메모")
       .navigationBarItems(trailing: ModalButton(show: $showComposer)) //값이 전달되는것이 아니라 바인딩을 전달
       .sheet(isPresented: $showComposer, content: {
         ComposeScene(showComposer: self.$showComposer)
-//          .environmentObject(store)//????? 안해줘도 되는데??
+        //          .environmentObject(store)//????? 안해줘도 되는데??
           .environmentObject(KeyboardObserver())
       })
+      
     }
   }
 }
