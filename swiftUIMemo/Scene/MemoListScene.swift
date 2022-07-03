@@ -16,7 +16,10 @@ struct MemoListScene: View {
   var body: some View {
     NavigationView {
       List(store.list) { memo in
-        MemoCell(memo: memo)
+        NavigationLink(destination: DetailScene(memo: memo), label: {
+          MemoCell(memo: memo)
+        })
+        
       }
       .navigationTitle("내 메모")
       .navigationBarItems(trailing: ModalButton(show: $showComposer)) //값이 전달되는것이 아니라 바인딩을 전달

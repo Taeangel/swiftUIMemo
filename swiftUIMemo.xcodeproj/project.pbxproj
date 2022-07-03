@@ -20,6 +20,7 @@
 		86FB039B286BC9C7002A2834 /* ComposeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FB039A286BC9C7002A2834 /* ComposeScene.swift */; };
 		86FB03A32871E1B5002A2834 /* TextView.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FB03A22871E1B5002A2834 /* TextView.swift.swift */; };
 		86FB03A62871E42C002A2834 /* KeyboardObserved.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FB03A52871E42C002A2834 /* KeyboardObserved.swift.swift */; };
+		86FB03A82871EDBC002A2834 /* DetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FB03A72871EDBC002A2834 /* DetailScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		86FB039A286BC9C7002A2834 /* ComposeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeScene.swift; sourceTree = "<group>"; };
 		86FB03A22871E1B5002A2834 /* TextView.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift.swift; sourceTree = "<group>"; };
 		86FB03A52871E42C002A2834 /* KeyboardObserved.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserved.swift.swift; sourceTree = "<group>"; };
+		86FB03A72871EDBC002A2834 /* DetailScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				86FB0396286BC811002A2834 /* View */,
 				86FB0344286BB2EB002A2834 /* MemoListScene.swift */,
 				86FB039A286BC9C7002A2834 /* ComposeScene.swift */,
+				86FB03A72871EDBC002A2834 /* DetailScene.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 			files = (
 				86FB034C286BB2ED002A2834 /* Persistence.swift in Sources */,
 				86FB0392286BBA23002A2834 /* MemoStore.swift in Sources */,
+				86FB03A82871EDBC002A2834 /* DetailScene.swift in Sources */,
 				86FB034F286BB2ED002A2834 /* swiftUIMemo.xcdatamodeld in Sources */,
 				86FB0395286BC3B4002A2834 /* DateFormatter+Memo.swift in Sources */,
 				86FB0345286BB2EB002A2834 /* MemoListScene.swift in Sources */,
